@@ -57,11 +57,18 @@ type
     procedure Button17Click(Sender: TObject);
   private
     { Private declarations }
+    var calcNumber : Double;
+    var calcSign : Char;
+    var Result: Boolean;
+    var Number1, Number2, Sum, resultValue: Integer;
+
+    function Multiply(x, y: Integer): Integer;
+    procedure AddNumber(number: Integer);
+    procedure Track(item: Char);
   public
     { Public declarations }
-    function Multiply(x, y: Integer): Integer;
-    function AddNumber(number: Integer): Integer;
-    function Track(item: String): String;
+
+
   end;
 
 var
@@ -77,11 +84,6 @@ function TForm1.Multiply(x, y: Integer): Integer;
 begin
   Result := x * y;
 end;
-
-//variabele aanmaken.
-var Result: Boolean = False;
-var Number1, Number2, Sum: Integer;
-var resultValue: Integer;
 
 
 //click event van button1.
@@ -122,99 +124,55 @@ end;
 
 
 
-var calcNumber : Double;
-var calcSign : String;
+
 
 //functie die getallen achter elkaar zet.
-function TForm1.AddNumber(number: Integer): Integer;
+procedure TForm1.AddNumber(number: Integer);
 begin
   Edit4.Text := Edit4.Text + IntToStr(number);
 end;
 
 //functie die de som bijhoudt.
-function TForm1.Track(item: String): String;
+procedure TForm1.Track(item: Char);
 begin
+if Edit4.Text = '' then
+  begin
+  calcSign := item
+  end
 
-  //als item + is.
-  if item = '+' then
-    //als Edit4 leeg is.
-    if Edit4.Text = '' then
-      calcSign := '+'
-    //als Edit4 niet leeg is.
+  else
+  begin
+  if calcNumber = 0 then
+    begin
+    calcNumber := StrToInt(Edit4.Text);
+    end
     else
-      begin
-        if calcNumber = 0 then
-          begin
-            calcNumber := StrToInt(Edit4.Text);
-          end
-        else
-          begin
-            calcNumber := calcNumber + StrToInt(Edit4.Text);
-          end;
-      calcSign := '+';
-      end
-
-  //als item - is.
-  else if item = '-' then
-  //als Edit4 leeg is.
-    if Edit4.Text = '' then
-      calcSign := '-'
-    //als Edit4 niet leeg is.
-    else
-      begin
-        if calcNumber = 0 then
-          begin
-            calcNumber := StrToInt(Edit4.Text);
-          end
-        else
-          begin
-            calcNumber := calcNumber - StrToInt(Edit4.Text);
-          end;
-      calcSign := '-';
-      end
-
-  //als item * is.
-  else if item = '*' then
-  //als Edit4 leeg is.
-    if Edit4.Text = '' then
-      calcSign := '*'
-    //als Edit4 niet leeg is.
-    else
-      begin
-        if calcNumber = 0 then
-          begin
-            calcNumber := StrToInt(Edit4.Text);
-          end
-        else
-          begin
-            calcNumber := calcNumber * StrToInt(Edit4.Text);
-          end;
-      calcSign := '*';
-      end
-
-  //als item / is.
-  else if item = '/' then
-    //als Edit4 leeg is.
-    if Edit4.Text = '' then
-      calcSign := '/'
-    //als Edit4 niet leeg is.
-    else
-      begin
-        if calcNumber = 0 then
-          begin
-            calcNumber := StrToInt(Edit4.Text);
-          end
-        else
-          begin
-            calcNumber := calcNumber / StrToInt(Edit4.Text);
-          end;
-      calcSign := '/';
+    begin
+      case item of
+      '+':
+        begin
+        calcNumber := calcNumber + StrToInt(Edit4.Text);
+        end;
+      '-':
+        begin
+        calcNumber := calcNumber - StrToInt(Edit4.Text);
+        end;
+        '*':
+        begin
+        calcNumber := calcNumber * StrToInt(Edit4.Text);
+        end;
+      '/':
+        begin
+        calcNumber := calcNumber / StrToInt(Edit4.Text);
+        end
       end;
+    end;
+  calcSign := item;
+  end;
 
-    //visuele variables zetten.
-    Label5.Caption := FloatToStr(calcNumber);
-    Label4.Caption := calcSign;
-    Edit4.Text := '';
+  Label5.Caption := FloatToStr(calcNumber);
+  Label4.Caption := calcSign;
+  Edit4.Text := '';
 end;
 
 

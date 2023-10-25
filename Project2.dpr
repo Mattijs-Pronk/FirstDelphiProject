@@ -13,7 +13,8 @@ uses
   DUnitX.Loggers.Xml.NUnit,
   {$ENDIF }
   DUnitX.TestFramework,
-  Unit2 in 'Unit2.pas';
+  Unit2 in 'Unit2.pas',
+  Unit3 in 'Unit3.pas';
 
 { keep comment here to protect the following conditional from being removed by the IDE when adding a unit }
 {$IFNDEF TESTINSIGHT}
