@@ -57,18 +57,16 @@ type
     procedure Button17Click(Sender: TObject);
   private
     { Private declarations }
+
+  public
+    { Public declarations }
     var calcNumber : Double;
     var calcSign : Char;
     var Result: Boolean;
     var Number1, Number2, Sum, resultValue: Integer;
-
     function Multiply(x, y: Integer): Integer;
     procedure AddNumber(number: Integer);
-    procedure Track(item: Char);
-  public
-    { Public declarations }
-
-
+    function Track(item: Char): String;
   end;
 
 var
@@ -133,7 +131,7 @@ begin
 end;
 
 //functie die de som bijhoudt.
-procedure TForm1.Track(item: Char);
+function TForm1.Track(item: Char): String;
 begin
 if Edit4.Text = '' then
   begin
