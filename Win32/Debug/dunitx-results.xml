@@ -1,1 +1,38 @@
-﻿
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<test-results name="C:\Users\mattijsp\Desktop\FirstDelphiProject\Win32\Debug\Project2.exe" total="14" errors="0" failures="0" ignored="0" inconclusive="0" not-run="0" skipped="0" invalid="0" date="2023-10-26" time="0.230">
+  <culture-info current-culture="en" current-uiculture="en" />
+  <test-suite type="Assembly" name="Project2.exe" executed="true" result="Success" success="True" time="0.230" asserts="0">
+    <results>
+        <test-suite type="Namespace" name="Unit2" executed="true" result="Success" success="True" time="0.228" asserts="0" >
+          <results>
+              <test-suite type="Fixture" name="SimpleTestClass" executed="True" result="Success" success="True" time="0.228" >
+                <results>
+                  <test-case name="TestButton1Click" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="TestButton2Click" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="TestMultiply" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="TestButton3Click" executed="True" result="Success" success="True" time="0.001" asserts="0" />
+                </results>
+              </test-suite>
+          </results>
+        </test-suite>
+        <test-suite type="Namespace" name="CalcTests" executed="true" result="Success" success="True" time="0.166" asserts="0" >
+          <results>
+              <test-suite type="Fixture" name="CalcTestsClass" executed="True" result="Success" success="True" time="0.166" >
+                <results>
+                  <test-case name="AddNumberSucceeds" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="AddNumberFails" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="TrackSumWithPlusSucceeds" executed="True" result="Success" success="True" time="0.001" asserts="0" />
+                  <test-case name="TrackSumWithPlusFails" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="TrackSumWithMinusSucceeds" executed="True" result="Success" success="True" time="0.001" asserts="0" />
+                  <test-case name="TrackSumWithMinusFails" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="TrackSumWithTimesSucceeds" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="TrackSumWithTimesFails" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="TrackSumWithDivideSucceeds" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="TrackSumWithDivideFails" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                </results>
+              </test-suite>
+          </results>
+        </test-suite>
+    </results>
+  </test-suite>
+</test-results>

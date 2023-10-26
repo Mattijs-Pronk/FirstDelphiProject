@@ -8,9 +8,9 @@ uses
 
 type
   [TestFixture]
-  TMyTestObject = class
+  SimpleTestClass = class
   //class die gebruikt moet gaan worden inlezen als een object in dit geval "_GettingStarted1".
-  strict private _GettingStarted1: Unit1.TForm1;
+  strict private _simpleTest: Unit1.TForm1;
   public
     //hieronder moet je elke test aangeven die gedaan moet worden.
     [Setup]
@@ -29,30 +29,30 @@ type
 
 implementation
 
-procedure TMyTestObject.Setup;
+procedure SimpleTestClass.Setup;
 begin
   // bij de setup geef je aan dat het form moet worden aangemaakt anders werken de knoppen/textvakken/labels enz... niet.
-  _GettingStarted1 := Unit1.TForm1.Create(nil);
+  _simpleTest := Unit1.TForm1.Create(nil);
 end;
 
-procedure TMyTestObject.TearDown;
+procedure SimpleTestClass.TearDown;
 begin
   // bij het afbreken van de testen moet het form ook weer gesloten worden.
-  _GettingStarted1.Free;
+  _simpleTest.Free;
 end;
 
 
 
 //vanaf hier beginnen de methodes die worden aangeroepen in de gekozen class van het "GettingStarted1.pas".
-procedure TMyTestObject.TestButton1Click;
+procedure SimpleTestClass.TestButton1Click;
 begin
   // Arrange
   var expectedResult: Boolean;
   var actualResult: Boolean;
 
   // Act
-  _GettingStarted1.Button1.Click;
-  actualResult := StrToBool(_GettingStarted1.label1.Caption);
+  _simpleTest.Button1.Click;
+  actualResult := StrToBool(_simpleTest.label1.Caption);
 
   // Assert
   Assert.IsNotNull(actualResult);
@@ -62,21 +62,21 @@ end;
 
 
 
-procedure TMyTestObject.TestButton2Click;
+procedure SimpleTestClass.TestButton2Click;
 begin
   // Arrange
   var expectedResult: Integer;
   var actualResult: Integer;
 
-  _GettingStarted1.Edit1.Text := '3';
-  _GettingStarted1.Edit2.Text := '3';
+  _simpleTest.Edit1.Text := '3';
+  _simpleTest.Edit2.Text := '3';
 
       // Expected result 3+3=6
       expectedResult := 6;
 
   // Act
-  _GettingStarted1.Button2.Click;
-  actualResult := StrToInt(_GettingStarted1.Edit3.Text);
+  _simpleTest.Button2.Click;
+  actualResult := StrToInt(_simpleTest.Edit3.Text);
 
   // Assert
   Assert.IsNotEmpty(actualResult);
@@ -85,7 +85,7 @@ end;
 
 
 
-procedure TMyTestObject.TestMultiply;
+procedure SimpleTestClass.TestMultiply;
 begin
   // Arrange
   var expectedResult: Integer;
@@ -95,7 +95,7 @@ begin
       expectedResult := 36;
 
   // Act
-  actualResult := _GettingStarted1.Multiply(6,6);
+  actualResult := _simpleTest.Multiply(6,6);
 
   // Assert
   Assert.IsNotNull(actualResult);
@@ -104,7 +104,7 @@ end;
 
 
 
-procedure TMyTestObject.TestButton3Click;
+procedure SimpleTestClass.TestButton3Click;
 begin
   // Arrange
   var expectedResult: Integer;
@@ -114,8 +114,8 @@ begin
       expectedResult := 144;
 
   // Act
-  _GettingStarted1.Button3.Click;
-  actualResult := StrToInt(_GettingStarted1.label3.Caption);
+  _simpleTest.Button3.Click;
+  actualResult := StrToInt(_simpleTest.label3.Caption);
 
   // Assert
   Assert.IsNotEmpty(actualResult);
@@ -123,6 +123,5 @@ begin
 end;
 
 initialization
-  TDUnitX.RegisterTestFixture(TMyTestObject);
-
+  TDUnitX.RegisterTestFixture(SimpleTestClass);
 end.

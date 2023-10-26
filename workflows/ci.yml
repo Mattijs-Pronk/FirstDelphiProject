@@ -1,0 +1,25 @@
+   name: CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Set up Delphi environment
+      uses: vsoft-dpk/setup-delphi@v2
+      with:
+        version: '11.3'
+
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Build project
+      run: '"C:\Program Files (x86)\Embarcadero\Studio\22.0\bin\rsvars.bat" && msbuild /t:Build /p:Configuration=Release ProjectGroup1.dproj'
+
+    - name: Run DUnitX tests
+      run: Project2.exe

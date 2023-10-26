@@ -66,7 +66,7 @@ type
     var Number1, Number2, Sum, resultValue: Integer;
     function Multiply(x, y: Integer): Integer;
     procedure AddNumber(number: Integer);
-    function Track(item: Char): String;
+    function TrackSum(item: Char): String;
   end;
 
 var
@@ -131,7 +131,7 @@ begin
 end;
 
 //functie die de som bijhoudt.
-function TForm1.Track(item: Char): String;
+function TForm1.TrackSum(item: Char): String;
 begin
 if Edit4.Text = '' then
   begin
@@ -185,27 +185,27 @@ end;
 
 procedure TForm1.Button17Click(Sender: TObject);
 begin
-    Track(calcSign);
+    TrackSum(calcSign);
 end;
 
 procedure TForm1.Button13Click(Sender: TObject);
 begin
-    Track('*');
+    TrackSum('*');
 end;
 
 procedure TForm1.Button14Click(Sender: TObject);
 begin
-    Track('+');
+    TrackSum('+');
 end;
 
 procedure TForm1.Button15Click(Sender: TObject);
 begin
-      Track('-');
+      TrackSum('-');
 end;
 
 procedure TForm1.Button16Click(Sender: TObject);
 begin
-    Track('/');
+    TrackSum('/');
 end;
 
 procedure TForm1.Button18Click(Sender: TObject);

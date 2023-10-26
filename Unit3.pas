@@ -3,7 +3,9 @@ unit Unit3;
  interface
 
  uses
-   TestFramework, Unit1;
+   Unit1,
+   TestFramework,
+   GUITestRunner;
  type
    // Test methods for class TCalc
    TestTCalc = class(TTestCase)
@@ -13,8 +15,8 @@ unit Unit3;
      procedure SetUp; override;
      procedure TearDown; override;
    published
-//     procedure TestAdd;
-//     procedure TestSub;
+      procedure TestMultiply;
+
    end;
 
  implementation
@@ -29,24 +31,20 @@ unit Unit3;
    _Unit1 := nil;
  end;
 
-// procedure TestTCalc.TestAdd;
-// var
-//   _result: System.Integer;
-//   y: System.Integer;
-//   x: System.Integer;
-// begin
-//   _result := _Unit1.Add(x, y);
-//   // TODO: Add testcode here
-// end;
-//
-// procedure TestTCalc.TestSub;
-// var
-//   _result: System.Integer;
-//   y: System.Integer;
-//   x: System.Integer;
-// begin
-//   _result := _Unit1.Sub(x, y);
-//   // TODO: Add testcode here
-// end;
+procedure TestTCalc.TestMultiply;
+begin
+  // Arrange
+  var expectedResult: Integer;
+  var actualResult: Integer;
+
+      // Expected result 6*6=36
+      expectedResult := 36;
+
+  // Act
+  actualResult := _Unit1.Multiply(6,6);
+
+  // Assert
+  CheckEquals(expectedResult, actualResult);
+end;
 
 end.
