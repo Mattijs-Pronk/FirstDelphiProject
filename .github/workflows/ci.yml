@@ -13,13 +13,20 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Set up Delphi environment
-      uses: vsoft-dpk/setup-delphi@v2
-      with:
-        version: '11.3'  # Adjust to your Delphi version
+    - name: Install Delphi
+      run: |
+        # Download Delphi installer (replace URL with your installer)
+        Invoke-WebRequest -Uri "C:\Users\mattijsp\Desktop\Radexe\RADStudio_11_3_esd_28_13236.exe" -OutFile "RADStudio_11_3_esd_28_13236.exe"
+        
+        # Install Delphi silently
+        Start-Process -FilePath "DelphiInstaller.exe" -ArgumentList "/VERYSILENT /SUPPRESSMSGBOXES /NORESTART /SP-" -Wait
+        
+        # Clean up installer
+        Remove-Item "RADStudio_11_3_esd_28_13236.exe"
 
     - name: Build project
-      run: msbuild /t:Build /p:Configuration=Release ProjectGroup1.dproj
+      run: msbuild /t:Build /p:Configuration=Release GroupProject1.dproj
 
     - name: Run DUnitX tests
       run: Project2.exe
+
